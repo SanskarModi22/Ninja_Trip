@@ -7,9 +7,19 @@ class ScreenTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
+    return TweenAnimationBuilder(
+      tween: ColorTween(begin: Colors.blue, end: Colors.red),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 36, color: Colors.white, fontWeight: FontWeight.bold),
+      ),
+      duration: Duration(seconds: 2),
+      builder: (BuildContext context, _val, _) {
+        return Text(
+          text,
+          style: TextStyle(fontSize: 36, color: _val, fontWeight: FontWeight.bold),
+        );
+      },
     );
   }
 }
